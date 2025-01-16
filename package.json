@@ -1,0 +1,26 @@
+{
+  "name": "nsd_app_uploader",
+  "version": "0.2.0",
+  "main": "index.js",
+  "scripts": {},
+  "author": "Kazantsev Egor Dmitrievich",
+  "license": "ISC",
+  "dependencies": {
+    "app-root-path": "^3.1.0",
+    "archiver": "^7.0.1",
+    "axios": "^1.7.9"
+  },
+  "type": "module",
+  "bin": {
+    "nsd_app_uploader_version": "cli/version.js",
+    "create_zip": "cli/create_zip.js",
+    "send_zip": "cli/send_zip.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/exeki/nsd_app_uploader.git"
+  },
+  "homepage": "https://github.com/exeki/nsd_app_uploader#readme",
+  "description": "CLI утилита, отправляет ваш собранный проект на инсталляцию NSD, позволяя не заниматься этим руками.",
+  "keywords": ["Naumen Service Desk", "Naumen", "NSMP", "NSD"]
+}
