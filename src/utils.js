@@ -3,7 +3,7 @@ import {createRequire} from "module";
 const require = createRequire(import.meta.url);
 const fs = require('fs')
 
-const DEBUG = true
+const DEBUG = false
 const appRootPath = require('app-root-path').path
 const zipTargetPath = appRootPath + "\\dist.zip"
 const configPath = appRootPath + '\\nsd_app_uploader.json'
