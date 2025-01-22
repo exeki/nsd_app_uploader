@@ -4,8 +4,14 @@ import {appRootPath, require, getConfigFile, zipTargetPath} from './../src/utils
 const fs = require('fs')
 const archiver = require('archiver')
 
+if(fs.existsSync(zipTargetPath)) {
+    console.log('Удаление существующего архива')
+    fs.unlinkSync(zipTargetPath)
+    console.log('Файл успешно удалён')
+}
+
 const configFile = getConfigFile()
-let sourceDirPath =  '\\dist'
+let sourceDirPath =  '\\'
 if(configFile?.sourceDirPath) sourceDirPath = configFile.sourceDirPath
 const distPath =  appRootPath + sourceDirPath
 
