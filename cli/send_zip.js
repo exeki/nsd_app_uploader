@@ -1,12 +1,12 @@
 #!/usr/bin/env node
 
-import {zipTargetPath, require, getConfigFile, DEBUG} from './../src/utils.js'
+import {zipTargetPath, require, configFile, debug} from './../src/utils.js'
+import {DEFAULT_SCHEME} from '../src/constants.js'
 
 const fs = require('fs')
 const axios = require('axios')
 const https = require('https')
 
-const configFile = getConfigFile()
 if (!configFile) throw new Error("Отправка файла без конфигурационного файла невозможна.")
 
 const host = configFile.host
@@ -16,7 +16,7 @@ if (accessKey === undefined || accessKey == null || accessKey?.length === 0) thr
 const code = configFile.code
 if (code === undefined || code == null || code?.length === 0) throw new Error("В конфигурационном файле не указан code.")
 
-let scheme = 'https'
+let scheme = DEFAULT_SCHEME
 if (configFile.scheme) scheme = configFile.scheme
 console.log(`Начало отправки файла на инсталляцию ${configFile.host}`)
 
@@ -31,8 +31,8 @@ console.log(`Чтение файла ` + zipTargetPath)
 const fileBuffer = fs.readFileSync(zipTargetPath)
 const blob = new Blob([fileBuffer])
 formData.append('file', blob, Math.floor(Date.now() / 1000).toString() + '.zip')
-if (DEBUG) console.log(url)
-if (DEBUG) console.log(formData)
+if (debug) console.log(url)
+if (debug) console.log(formData)
 console.log(`Отправка файла`)
 let disableSll = false
 if(configFile.disableSll !== undefined) disableSll = configFile.disableSll
